@@ -1,0 +1,49 @@
+.add_button {
+    text-align: right;
+}
+
+.tr_color {
+    color: white;
+    background-color: #01050d;
+}
+.home-container {
+    background-image: url('background.jpg');
+
+    background-size: cover;
+    background-position: center;
+    
+    height: 100vh;
+    display: flex; 
+    justify-content: center; 
+    
+    text-align: center; 
+  
+  }
+  .home-container:before {
+    position: absolute;
+    content: "";
+    top: 40;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(125, 129, 180, 0.6);
+  
+  }
+  h2 {
+    font-size: 60px;
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    
+  }
+ 
+  p {
+    font-size: 35px;
+    color: white;
+    font-weight: 700;
+   
+    margin-top: 150px;
+    
+  }
+ 
