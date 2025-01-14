@@ -1,32 +1,26 @@
-# Étape 1 : Utiliser une image Node.js comme base
+# Étape 1 : Utiliser Node.js pour construire et servir l'application
 FROM node:lts-alpine
 
 # Définir le répertoire de travail dans le conteneur
 WORKDIR /app
 
-# Copier les fichiers package*.json dans le conteneur
+# Copier les fichiers package.json et package-lock.json pour installer les dépendances
 COPY package*.json ./
 
 # Installer les dépendances
 RUN npm install
 
-# Vérifier si react-scripts est installé
-RUN ls -l ./node_modules/.bin
-
-# Donner les permissions d'exécution aux scripts
-RUN chmod +x ./node_modules/.bin/react-scripts
-
-# Copier le reste des fichiers
+# Copier le reste des fichiers du projet
 COPY . .
 
-# Construire l'application
+# Construire l'application React
 RUN npm run build
 
-# Étape 2 : Servir les fichiers statiques avec Nginx
-FROM nginx:alpine
+# Installer un serveur statique léger pour servir les fichiers (comme `serve`)
+RUN npm install -g serve
 
-# Copier les fichiers build dans le dossier de Nginx
-COPY --from=0 /app/build /usr/share/nginx/html
+# Définir la commande par défaut pour servir les fichiers
+CMD ["serve", "-s", "build", "-l", "80"]
 
 # Exposer le port 80
 EXPOSE 80

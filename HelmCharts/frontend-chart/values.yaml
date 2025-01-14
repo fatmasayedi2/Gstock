@@ -1,0 +1,21 @@
+replicaCount: 1
+
+image:
+  repository: fatma467/gstock-frontend
+  tag: latest
+  pullPolicy: Always
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: false
+  name: ""
+  annotations: {}
+  hosts:
+    - host: frontend.local
+      paths:
+        - /
+
+resources: {}

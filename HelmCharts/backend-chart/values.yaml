@@ -1,0 +1,21 @@
+replicaCount: 1
+
+image:
+  repository: fatma467/backend-app
+  tag: latest
+  pullPolicy: Always
+
+service:
+  type: ClusterIP
+  port: 3002
+
+ingress:
+  enabled: false
+  name: ""
+  annotations: {}
+  hosts:
+    - host: backend.local
+      paths:
+        - /
+
+resources: {}
